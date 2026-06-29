@@ -56,8 +56,36 @@ export default function Projetos() {
             {/*<li className="hover:bg-slate-600 hover:border-b-1 transition duration-300 rounded-full p-2 text-center filter text-2xl ease-in-out"><a href=""> Em desenvolvimento... </a></li>*/}
         </ul>
       </aside>
-      <main id='projetos' className='h-max m-6 flex flex-row flex-wrap'>
-        <ul className='flex h-min gap-8 '>
+      <main id='projetos' className='h-200 m-6 flex'>
+        <ul className='flex flex-wrap h-min gap-8 '>
+          <li className='relative flex h-80 rounded-full'>
+            <Link className="flex flex-col w-full gap-8 text-xl h-80 p-4 items-center cursor-default border-b border-b-transparent transition-all duration-300 hover:ease-out hover:border-white hover:bg-zinc-700 hover:rounded-none" href={"https://sitegoop01.vercel.app/"} >
+             <nav className='flex gap-8'> 
+              <Image src={goop} alt="goop" className='w-45 rounded-2xl border-2 border-white hover:cursor-pointer hover:opacity-[0.6] hover:ease-in-out transition duration-300' />  
+             </nav>Loja Online de Roupas - Goop Studios
+             </Link>  
+          </li>
+          <li className='relative flex h-80 rounded-full'>
+            <Link className="flex flex-col w-full gap-8 text-xl h-80 p-4 items-center cursor-default border-b border-b-transparent transition-all duration-300 ease-in-out hover:border-white hover:bg-zinc-700 hover:rounded-none" href={"https://sitegoop01.vercel.app/"} >
+             <nav className='flex gap-8'> 
+              <Image src={goop} alt="goop" className='w-45 rounded-2xl border-2 border-white hover:cursor-pointer hover:opacity-[0.6] hover:ease-in-out transition duration-300' />  
+             </nav>Loja Online de Roupas - Goop Studios
+             </Link>  
+          </li>
+          <li className='relative flex h-80 rounded-full'>
+            <Link className="flex flex-col w-full gap-8 text-xl h-80 p-4 items-center cursor-default border-b border-b-transparent transition-all duration-300 ease-in-out hover:border-white hover:bg-zinc-700 hover:rounded-none" href={"https://sitegoop01.vercel.app/"} >
+             <nav className='flex gap-8'> 
+              <Image src={goop} alt="goop" className='w-45 rounded-2xl border-2 border-white hover:cursor-pointer hover:opacity-[0.6] hover:ease-in-out transition duration-300' />  
+             </nav>Loja Online de Roupas - Goop Studios
+             </Link>  
+          </li>
+          <li className='relative flex h-80 rounded-full'>
+            <Link className="flex flex-col w-full gap-8 text-xl h-80 p-4 items-center cursor-default border-b border-b-transparent transition-all duration-300 ease-in-out hover:border-white hover:bg-zinc-700 hover:rounded-none" href={"https://sitegoop01.vercel.app/"} >
+             <nav className='flex gap-8'> 
+              <Image src={goop} alt="goop" className='w-45 rounded-2xl border-2 border-white hover:cursor-pointer hover:opacity-[0.6] hover:ease-in-out transition duration-300' />  
+             </nav>Loja Online de Roupas - Goop Studios
+             </Link>  
+          </li>
           <li className='relative flex h-80 rounded-full'>
             <Link className="flex flex-col w-full gap-8 text-xl h-80 p-4 items-center cursor-default border-b border-b-transparent transition-all duration-300 ease-in-out hover:border-white hover:bg-zinc-700 hover:rounded-none" href={"https://sitegoop01.vercel.app/"} >
              <nav className='flex gap-8'> 
