@@ -13,22 +13,8 @@ import { faInstagram, faGithub, faLinkedinIn, faDiscord } from "@fortawesome/fre
 export default function Home() {
  const router = useRouter();
  const [isOpen, setIsOpen] = useState(false);
- function redirect(params){
-  console.log(params)
-  if (params == 'portfolio'){
-    router.push('/')
-    setIsOpen(false)
-  }
-  else if (params == 'contatos'){
-  router.push("/contatos")
-  setIsOpen(false)
-  }
-  else if (params == 'projetos'){
-    router.push("/projetos")
-    setIsOpen(false)
-  }
   
- }
+
   return (
     
     <div className="flex min-h-screen flex-col ">
@@ -57,9 +43,9 @@ export default function Home() {
         <FontAwesomeIcon icon={faArrowLeft} style={{width: '20px', height:'20px',textAlign:'center'}} />
       </button>
       <ul className='flex flex-col gap-8 m-8 border-spacing-2'>
-        <li className="text-center filter text-2xl"><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 hover:bg-slate-500 duration-300" onClick={() => redirect('portfolio')}>Portfolio</button></li>
-        <li className="text-center filter text-2xl"><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 hover:bg-slate-500 duration-300" onClick={() => redirect('projetos')} >Projetos</button></li>
-        <li className="text-center filter text-2xl"><button className="gap-20 relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 hover:bg-slate-500 duration-300" onClick={() => redirect('contatos')}>Contatos</button></li>
+        <li className="text-center filter text-2xl"><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 hover:bg-slate-500 duration-300" onClick={() => router.push("/portfolio")}>Portfolio</button></li>
+        <li className="text-center filter text-2xl"><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 hover:bg-slate-500 duration-300" onClick={() => router.push("/projetos")} >Projetos</button></li>
+        <li className="text-center filter text-2xl"><button className="gap-20 relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 hover:bg-slate-500 duration-300" onClick={() => router.push("/contatos")}>Contatos</button></li>
         <li className=" text-center filter text-2xl "><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 hover:bg-slate-500 duration-300">About me</button></li>
         {/*<li className="hover:bg-slate-600 hover:border-b-1 transition duration-300 rounded-full p-2 text-center filter text-2xl ease-in-out"><a href=""> Em desenvolvimento... </a></li>*/}
       </ul>

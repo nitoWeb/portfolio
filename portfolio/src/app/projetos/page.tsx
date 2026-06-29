@@ -1,5 +1,5 @@
 "use client"
-import {redirect, useRouter} from 'next/navigation';
+import {useRouter} from 'next/navigation';
 import { useState} from 'react'
 import goop from "@/assets/goop.jpg"
 import Image from "next/image";
@@ -14,17 +14,6 @@ import Link from 'next/link';
 export default function Projetos() {
  const router = useRouter();
  const [isOpen, setIsOpen] = useState(false);
-function redirect(params){
- if (params == 'portfolio'){
-    router.push('/')
- }
- if (params == 'projetos'){
-    router.push('/projetos')
- }
- if (params == 'goop'){
-   href("https://sitegoop01.vercel.app/")
- }
-}
   return (
     
     <div className="flex min-h-screen flex-col ">
@@ -46,17 +35,17 @@ function redirect(params){
         <FontAwesomeIcon icon={faArrowLeft} style={{width: '20px', height:'20px',textAlign:'center'}} />
       </button>
       <ul className='flex flex-col gap-8 m-8 border-spacing-2'>
-        <li className="text-center filter text-2xl"><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100" onClick={() => fechar('portfolio')}>Portfolio</button></li>
-        <li className="text-center filter text-2xl"><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100" onClick={() => fechar('projetos')} >Projetos</button></li>
-        <li className="text-center filter text-2xl"><button className="gap-20 relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100" onClick={() => fechar('contatos')}>Contatos</button></li>
+        <li className="text-center filter text-2xl"><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100" onClick={() => router.push("/portfolio")}>Portfolio</button></li>
+        <li className="text-center filter text-2xl"><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100" onClick={() => router.push("/projetos")} >Projetos</button></li>
+        <li className="text-center filter text-2xl"><button className="gap-20 relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100" onClick={() => router.push("/contatos")}>Contatos</button></li>
         <li className=" text-center filter text-2xl "><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100">About me</button></li>
         {/*<li className="hover:bg-slate-600 hover:border-b-1 transition duration-300 rounded-full p-2 text-center filter text-2xl ease-in-out"><a href=""> Em desenvolvimento... </a></li>*/}
       </ul>
     </aside>
       <main id='projetos' className='h-400 m-6 flex flex-row flex-wrap'>
         <ul className='flex gap-8 '>
-          <li className='flex flex-col gap-8 bg-zinc-950 text-xl h-80 rounded-2xl p-4 items-center cursor-pointer '><button onClick={redirect('')}>Loja Online de Roupas - Goop Studios</button> <nav className='flex gap-8'> <Image src={goop} alt="goop" className='w-45 rounded-2xl border-2 border-zinc-600' />  </nav>  </li>
-          <li className='bg-zinc-800 text-xl h-80 rounded-2xl p-2 cursor-pointer'><button onClick={redirect('')}>Loja Online de Roupas - Goop Studios</button>    </li>
+          <li className='flex flex-col gap-8 bg-zinc-950 text-xl h-80 rounded-2xl p-4 items-center cursor-pointer '><button>Loja Online de Roupas - Goop Studios</button> <nav className='flex gap-8'> <Image src={goop} alt="goop" className='w-45 rounded-2xl border-2 border-zinc-600' />  </nav>  </li>
+          <li className='bg-zinc-800 text-xl h-80 rounded-2xl p-2 cursor-pointer'><button>Loja Online de Roupas - Goop Studios</button>    </li>
        </ul>
       </main>
       <footer id='contatos' className="fixed bottom-0 w-full bg-zinc-900 text-white p-4 px-6 items-right text-right">
