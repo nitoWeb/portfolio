@@ -1,82 +1,127 @@
-"use client"
-import {useRouter} from 'next/navigation';
-import { useState} from 'react'
+"use client" 
+import { useEffect ,useState } from 'react'
+
 import Image from "next/image";
-import avatar from "@/assets/avatar.jpg";
+import avatar from "@/assets/unnamed3.png";
+import goop from "@/assets/goop.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { faInstagram, faGithub, faLinkedinIn, faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faGithub, faLinkedinIn, faDiscord, faReact, faJsSquare, faTypescript, faPython, faPhp } from "@fortawesome/free-brands-svg-icons";
+import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 
 
 
 
 export default function Home() {
- const router = useRouter();
- const [isOpen, setIsOpen] = useState(false);
-  
+ const [isOpen] = useState(false);
 
+ const dev = ["Desenvolvedor Web", "Desenvolvedor Front-End", "Desenvolvedor Back-End", "Desenvolvedor Full-Stack"]; // Cria array de profissões
+ const [devAtual, setDevAtual] = useState(dev[0]); // Define o estado inicial como a primeira profissão do array
+ const [index, setIndex] = useState(0); // Define o estado inicial do índice como 0
+ useEffect(() => { // UseEffect para atualizar a profissão atual a cada 5 segundos
+  const interval = setInterval(() => {
+    setIndex((prevIndex) => (prevIndex + 1) % dev.length); // Atualiza o índice para a próxima profissão, voltando ao início quando chegar ao final do array
+    setDevAtual(dev[index]); // Atualiza a profissão atual com base no índice atualizado
+  }, 5000); // Alterar a cada 5 segundos (5000 milissegundos)
+
+  return () => clearInterval(interval);
+}, [index, dev]); 
   return (
     
     <div className="flex min-h-screen flex-col ">
-      <header className="flex items-center justify-between w-full bg-zinc-900 p-4 px-10">
-        <h2 className="text-white text-shadow-white text-2xl font-bold "> Portfolio </h2>  
-        <nav>
+      <header className="flex items-center justify-between w-full bg-transparent p-4 px-10 fixed z-50">
+        <h2 className="text-white text-shadow-white text-2xl font-bold ">  </h2>  
+        <nav className="flex items-center justify-center h-full">
           <ul>
-            <li>
-              <button onClick={() => setIsOpen(true)} className="text-white text-2xl cursor-pointer transition hover:bg-slate-500 p-1 border-none rounded-full">
-              <FontAwesomeIcon
-                icon={faBars}
-                style={{ color: 'white', height: '20px' }}
-                className="text-white text-2xl"
-              />
-              </button>
-              
-              
-            </li>
-          </ul>
-          
+          <li className=" w-full h-full bg-transparent text-white text-center p-4 px-6">
+            <a href="https://www.instagram.com/nito.web/" target="_blank" rel="noopener noreferrer" className="mx-2 w-full h-full hover:text-gray-400  transition-colors duration-300">
+              <FontAwesomeIcon icon={faInstagram} size="2x" className="w-full h-full hover: opacity-100 hover:text-white hover:bg-zinc-700 hover: rounded-xl p-2"  />
+            </a>
+            <a href="https://github.com/nitoWeb" target="_blank" rel="noopener noreferrer" className="mx-2 w-full h-full hover:text-gray-400  transition-colors duration-300">
+              <FontAwesomeIcon icon={faGithub} size="2x" className="w-full h-full hover:bg-zinc-700 hover: rounded-xl p-2" />
+            </a>
+            <a href="https://www.linkedin.com/in/nicolas-costa-7080832b0/" target="_blank" rel="noopener noreferrer" className="mx-2 w-full h-full hover:text-gray-400  transition-colors duration-300">
+              <FontAwesomeIcon icon={faLinkedinIn} size="2x" className="w-full h-full hover:bg-zinc-700 hover: rounded-xl p-2" />
+            </a>
+            <a href="https://discord.gg/vp5FTRV7jf" target="_blank" rel="noopener noreferrer" className="mx-2 w-full h-full hover:text-gray-400  transition-colors duration-300">
+              <FontAwesomeIcon icon={faDiscord} size="2x" className="w-full h-full hover:bg-zinc-700 hover: rounded-xl p-2" />
+            </a>
+          </li>
+        </ul>
         </nav>
   </header>      
-  <div className={`fixed inset-0 bg-zinc-950 transition-opacity duration-300 z-40 ${isOpen ? "opacity-25 visible transition duration-300" : "opacity-0 invisible transition duration-300"}`}/>
-    <aside className={`fixed top-0 right-0 h-screen w-80 bg-zinc-900 text-white z-50 ease-in-out transition-transform duration-300 ${ isOpen ? "transition duration-300 translate-x-0" : "transition duration-300 translate-x-full"}`}>
-      <button onClick={() => setIsOpen(false)} className=" flex m-4 cursor-pointer hover:bg-slate-500 rounded-full p-2">
-        <FontAwesomeIcon icon={faArrowLeft} style={{width: '20px', height:'20px',textAlign:'center'}} />
-      </button>
-      <ul className='flex flex-col gap-8 m-8 border-spacing-2'>
-        <li className="text-center filter text-2xl"><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 hover:bg-slate-500 duration-300" onClick={() => router.push("/")}>Portfolio</button></li>
-        <li className="text-center filter text-2xl"><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 hover:bg-slate-500 duration-300" onClick={() => router.push("/projetos")} >Projetos</button></li>
-        <li className="text-center filter text-2xl"><button className="gap-20 relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 hover:bg-slate-500 duration-300" onClick={() => router.push("/contatos")}>Contatos</button></li>
-        <li className=" text-center filter text-2xl "><button className="relative pb-1 p-2 px-12 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-bottom-left after:scale-x-0 after:bg-white cursor-pointer after:transition-transform after:duration-500 after:ease-out hover:after:scale-x-100 hover:bg-slate-500 duration-300">About me</button></li>
-        {/*<li className="hover:bg-slate-600 hover:border-b-1 transition duration-300 rounded-full p-2 text-center filter text-2xl ease-in-out"><a href=""> Em desenvolvimento... </a></li>*/}
-      </ul>
+  <div className={`fixed inset-0  bg-zinc-950 transition-opacity duration-300 z-40 ${isOpen ? "opacity-25 visible transition duration-300" : "opacity-0 invisible transition duration-300"}`}/>
+      <div className="relative h-[70vh] min-h-[500px] overflow-hidden pointer-events-none">
+        <video autoPlay muted loop playsInline className="absolute inset-0 h-full w-full object-cover">
+          <source src="/video.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 top-90 px-6 md:px-16">
+          <h1 className="text-4xl font-bold text-white md:text-6xl">Bem vindos ao meu portfolio!<br/>  <p className={`text-xl ${devAtual == "Desenvolvedor Web" ? "text-red-300" : "text-blue-300" } ${devAtual == "Desenvolvedor Front-End" ? "text-yellow-300" : "text-white-300" } ${devAtual == "Desenvolvedor Full-Stack" ? "text-green-300" : "text-blue-300" }`}>Sou um {devAtual}</p>  </h1>
+          <ul className="flex flex-col items-start w-full bg-transparent text-white text-center p-4 px-6 gap-12">
+            <li> <a></a><FontAwesomeIcon icon={faReact} size="xl" className=" text-blue-400 w-8 h-8 hover:bg-zinc-700 hover: rounded-xl  p-2" /> <FontAwesomeIcon icon={faJsSquare} size="xl" className="text-yellow-400 w-8 h-8 hover:bg-zinc-700 hover: rounded-xl p-2" /> <FontAwesomeIcon icon={faTypescript} size="xl" className="text-blue-600 w-8 h-8 hover:bg-zinc-700 hover: rounded-xl p-2" /> <FontAwesomeIcon icon={faPython} size="xl" className="text-white-200 w-8 h-8 hover:bg-zinc-700 hover: rounded-xl p-2" /> <FontAwesomeIcon icon={faPhp} size="xl" className=" text-[#777bb3] w-8 h-8 hover:bg-zinc-700 hover: rounded-xl p-2" /> <FontAwesomeIcon icon={faDatabase} size="xl" className="text-white-400 w-8 h-8 hover:bg-zinc-700 hover: rounded-xl p-2" /> </li>
+          </ul>
+        </div>
+      </div>
 
-      
-    </aside>
-
-
-      
+      <main className={`fixed inset-0 bg-zinc-950 transition-transform duration-300 z-50 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
+        <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-60">
+          <source src="/video.mp4" type="video/mp4" />
+        </video>
+      </main>
 
       <main className="flex flex-col relative items-center justify-center top-0 flex-1 text-center">
+        <h1 className="text-4xl font-bold text-shadow-2xs opacity-90 mb-2 mt-6">
+          Introdução 
+        </h1>
+        <h1 className="text-4xl font-bold text-shadow-2xs opacity-90 mb-2 mt-6">
+          Nicolas Costa - Desenvolvedor Web Full-Stack
+        </h1>
+        
+        <ul className="flex flex-col items-center justify-center w-full bg-zinc-950 text-white text-center p-4 px-6 gap-12">
+        <li className="flex flex-col items-center justify-center w-full bg-zinc-950 text-white text-center p-4 px-6">
         <Image
           src={avatar}
           loading="eager"
           alt="Avatar"
-          className="rounded-full w-48 h-48 border-2 border-gray-700 mb-6 p-4 bg-black"
+          className="rounded-xl w-120 h0-120 border-2 border-gray-700 mb-6 p-4 bg-black opacity-90 hover:opacity-100 transition-opacity duration-300"
         />
-
-        <h1 className="text-4xl font-bold text-shadow-2xs">
-          nito.web
-        </h1>
-
-        <p className="mt-4 text-lg text-gray-600 text-wrap w-160">
-          Meu nome é Nicolas Costa, Eu sou um amante da programação, atualmente trabalho como desenvolvedor Web, tenho experiência em construir aplicações web modernas. Sinta-se a vontade para explorar meu trabalho !
+        <p className="mt-4 text-lg text-gray-400 text-wrap w-160 text-justify  ">
+         Desenvolvedor Web focado na criação de ecossistemas digitais eficientes e intuitivos. Com sólida experiência no ecossistema React, TypeScript e Tailwind CSS, desenvolvo plataformas funcionais onde design e performance andam lado a lado. Confira abaixo alguns dos meus principais trabalhos.
         </p>
-
-
+        </li>
+        <li className=" w-full bg-zinc-950 text-white text-center p-4 px-6 gap-8 flex flex-col items-center justify-center">
+      
+          <h1 className="text-4xl font-bold mb-2"> Projetos  </h1>
+          
+          <a className='text-white'>Loja de Roupas - GOOP STUDIOS </a>
+          <nav className="flex flex-col items-center justify-center w-full bg-zinc-950 text-white text-center p-4 px-6 gap-8 " >
+            <a href="https://sitegoop01.vercel.app" target="_blank" rel="noopener noreferrer">
+            <Image 
+            src={goop}
+            alt="GOOP STUDIOS"
+            width={400}
+            height={400}
+            className="rounded-lg border-2 mb-6 p-4 hover:bg-zinc-800"
+            />
+            </a>
+            <a href="https://sitegoop01.vercel.app" target="_blank" rel="noopener noreferrer">
+            <Image 
+            src={goop}
+            alt="GOOP STUDIOS"
+            width={400}
+            height={400}
+            className="rounded-lg border-2 mb-6 p-4 hover:bg-zinc-800"
+            />
+            </a>
+          </nav>
+        </li>
+      </ul>
+      
       </main>
-      <footer id='contatos' className="fixed flex bottom-0 w-full bg-zinc-900 text-white text-center p-4 px-6 ">
+      
+      <footer id='contatos' className=" bg-transparent flex bottom-0 w-full  text-white text-center p-4 px-6 py-6 ">
         <p className=" text-center ml-auto text-gray-400">
-          &copy; {new Date().getFullYear()} Nicolas Costa Porfolio. All rights reserved.
+          &copy; {new Date().getFullYear()} Nicolas Costa Portfolio. All rights reserved.
         </p>
       </footer>
     </div>
